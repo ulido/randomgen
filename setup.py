@@ -307,7 +307,9 @@ setup(
                           compiler_directives={'language_level': '3'}),
     packages=find_packages(),
     package_dir={'randomgen': './randomgen'},
-    package_data={'': ['*.h', '*.pxi', '*.pyx', '*.pxd', '*.in'],
+    package_data={'': ['*.h', '*.pxi', '*.pyx', '*.pxd', '*.in'] +
+                  [s.replace('randomgen/', '')
+                   for s in glob.glob('randomgen/src/*/*.h')],
                   'randomgen.tests.data': ['*.csv']},
     include_package_data=True,
     license='NSCA',
